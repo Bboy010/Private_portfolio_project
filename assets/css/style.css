@@ -134,7 +134,13 @@ h6 {
 }
 
 #header .logo a {
-  color: #222222;
+  color: #555555;
+  font-family: "Gotham Bold";
+  text-decoration: none;
+}
+
+#header .logo a span {
+  color: #34b7a7;
 }
 
 #header .logo img {
@@ -202,6 +208,7 @@ h6 {
   white-space: nowrap;
   transition: 0.3s;
   position: relative;
+  text-decoration: none;
 }
 
 .navbar a i,
@@ -404,7 +411,7 @@ h6 {
 .navbar-mobile .dropdown ul a i {
   font-size: 12px;
 }
-
+ 
 .navbar-mobile .dropdown ul a:hover,
 .navbar-mobile .dropdown ul .active:hover,
 .navbar-mobile .dropdown ul li:hover>a {
@@ -481,6 +488,7 @@ h6 {
   margin-top: 30px;
   color: #fff;
   background: #34b7a7;
+  text-decoration: none;
 }
 
 #hero .btn-a-propos:hover {
