@@ -24,114 +24,86 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `actualite`
+-- Structure de la table `actualites`
 --
 
-CREATE TABLE `actualite` (
+CREATE TABLE `actualites` (
   `id` int(100) NOT NULL,
   `title` varchar(250) NOT NULL,
-  `picture` varchar(500) NOT NULL,
+  `picture_url` varchar(500) NOT NULL,
   `details` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `actualite`
+-- Déchargement des données de la table `actualites`
 --
 
-INSERT INTO `actualite` (`id`, `title`, `picture`, `details`) VALUES
+INSERT INTO `actualites` (`id`, `title`, `picture_url`, `details`) VALUES
 (1, 'Actu 1', 'assets/img/portfolio/actu/actu-1.jpg', ''),
 (2, 'Actu 2', 'assets/img/portfolio/actu/actu-2.jpg', '');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `artworks`
+-- Structure de la table `posts`
 --
 
-CREATE TABLE `artworks` (
+CREATE TABLE `posts` (
   `id` int(100) NOT NULL,
-  `title` varchar(250) DEFAULT NULL,
+  `title` varchar(250) NOT NULL,
   `size` varchar(150) DEFAULT NULL,
-  `type` varchar(100) DEFAULT NULL,
-  `artwork_url` varchar(250) DEFAULT NULL
+  `type` varchar(100) NOT NULL,
+  `post_url` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Déchargement des données de la table `artworks`
+-- Déchargement des données de la table `posts`
 --
 
-INSERT INTO `artworks` (`id`, `title`, `size`, `type`, `artwork_url`) VALUES
-(1, 'peinture 1', NULL, 'peinture', 'assets/img/portfolio/peintures/peinture-1.jpg'),
-(2, 'peinture 2', NULL, 'peinture', 'assets/img/portfolio/peintures/peinture-2.jpg'),
-(3, 'Dessin 1', NULL, 'Dessin', 'assets/img/portfolio/dessins/dessin-1.jpg'),
-(4, 'Dessin 2', NULL, 'dessin', 'assets/img/portfolio/dessins/dessin-2.jpg'),
+INSERT INTO `posts` (`id`, `title`, `size`, `type`, `post_url`) VALUES
+(1, 'peinture 1', NULL, 'image/peinture', 'assets/img/portfolio/peintures/peinture-1.jpg'),
+(2, 'peinture 2', NULL, 'image/peinture', 'assets/img/portfolio/peintures/peinture-2.jpg'),
+(3, 'Dessin 1', NULL, 'image/dessin', 'assets/img/portfolio/dessins/dessin-1.jpg'),
+(4, 'Dessin 2', NULL, 'image/dessin', 'assets/img/portfolio/dessins/dessin-2.jpg'),
 (5, 'Video de performance 1', NULL, 'video', 'assets/img/portfolio/performances/LernerWorld-spot-2024.mp4');
 
 -- --------------------------------------------------------
-
---
--- Structure de la table `videos`
---
-
-CREATE TABLE `videos` (
-  `id` int(100) NOT NULL,
-  `title` varchar(250) NOT NULL,
-  `details` varchar(500) NOT NULL,
-  `artworks_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `videos`
---
-
-INSERT INTO `videos` (`id`, `title`, `details`, `artworks_id`) VALUES
-(1, 'Performance Sénégal', '', 0);
 
 --
 -- Index pour les tables déchargées
 --
 
 --
--- Index pour la table `actualite`
+-- Index pour la table `actualites`
 --
-ALTER TABLE `actualite`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `actualites`
+  ADD PRIMARY KEY (`id`),
+    ADD UNIQUE KEY `id` (`id`);
 
 --
--- Index pour la table `artworks`
+-- Index pour la table `posts`
 --
-ALTER TABLE `artworks`
+ALTER TABLE `posts`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `id` (`id`);
-
---
--- Index pour la table `videos`
---
-ALTER TABLE `videos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `artwork` (`artworks_id`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT pour la table `actualite`
+-- AUTO_INCREMENT pour la table `actualites`
 --
-ALTER TABLE `actualite`
+ALTER TABLE `actualites`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT pour la table `artworks`
+-- AUTO_INCREMENT pour la table `posts`
 --
-ALTER TABLE `artworks`
+ALTER TABLE `posts`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
---
--- AUTO_INCREMENT pour la table `videos`
---
-ALTER TABLE `videos`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

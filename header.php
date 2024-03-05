@@ -1,5 +1,5 @@
 <?php
-    $currentPage = filter_input(INPUT_GET, 'isOn');
+    $current_page_name = substr(substr($_SERVER['PHP_SELF'], strlen('/Private_portfolio_project/')), 0, -4);
 ?>
 
 
@@ -37,13 +37,6 @@
   <!-- bootstrap avec Jdevr -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-  <!-- =======================================================
-  * Template Name: Kelly
-  * Updated: Jan 29 2024 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -52,20 +45,20 @@
   <header id="header" class="fixed-top">
     <div class="container-fluid d-flex justify-content-between align-items-center">
 
-      <h1 class="logo me-auto me-lg-0"><a href="index.html">des<span>merges</span></a></h1>
+      <h1 class="logo me-auto me-lg-0"><a href="index.php">des<span>merges</span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="<?php if ($currentPage == 'home') echo ' active'; ?>" href="/?isOn=home">ACCUEIL</a></li>
-          <li><a class="<?php if ($currentPage == 'a-propos') echo ' active'; ?>" href="a-propos.php?isOn=a-propos">A PROPOS</a></li>
-          <li><a class="<?php if ($currentPage == 'cv') echo ' active'; ?>" href="cv.html">CV</a></li>
+          <li><a class="<?php if ($current_page_name == 'index') echo ' active'; ?>" href="index.php">ACCUEIL</a></li>
+          <li><a class="<?php if ($current_page_name == 'a-propos') echo ' active'; ?>" href="a-propos.php">A PROPOS</a></li>
+          <li><a class="<?php if ($current_page_name == 'cv') echo ' active'; ?>" href="cv.php">CV</a></li>
           <!-- <li><a href="services.html">Services</a></li> -->
-          <li><a class="<?php if ($currentPage == 'portfolio') echo ' active'; ?>" href="portfolio.html?isOn=portfolio">PORTFOLIO</a></li>
-          <li><a class="<?php if ($currentPage == 'contact  ') echo ' active'; ?>" href="contact.html?isOn=contact">CONTACTS</a></li>
+          <li><a class="<?php if ($current_page_name == 'portfolio') echo ' active'; ?>" href="portfolio.php">PORTFOLIO</a></li>
+          <li><a class="<?php if ($current_page_name == 'contact') echo ' active'; ?>" href="contact.php">CONTACTS</a></li>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
+        <i class="bi bi-list mobile-nav-toggle"></i>  
       </nav><!-- .navbar -->
 
       <div class="header-social-links">

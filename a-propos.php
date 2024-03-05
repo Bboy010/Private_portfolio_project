@@ -1,6 +1,12 @@
 <?php 
   require('header.php');
+  require('db_operations.php');
+
   $currentPage = 'a-propos';
+
+  $dbops = new DBOperations();
+
+  // var_dump(count($dbops->getAllActualities()));
 ?>
 
   <main id="main">
@@ -139,50 +145,30 @@
           <h2>Actualités</h2>
         </div>
           <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+              <?php 
+                    $i = 0;
+                    foreach($dbops->getAllActualities() as $actuality): $i++
+              ?>   
 
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-              <div class="portfolio-wrap">
-                <img src="assets/img/portfolio/actu/actu-1.JPG" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>App 1</h4>
-                  <p>App</p>
-                  <div class="portfolio-links">
-                    <a href="assets/img/portfolio/actu/actu-1.JPG" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                    <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
+                <?php if(count($dbops->getAllActualities()) % 2 == 0) : ?>
+                  <div class="col-lg-6 col-md-6 portfolio-item filter-app">
+                <?php else : ?>
+                  <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                <?php endif;?>
+                    <div class="portfolio-wrap">
+                      <img src="<?=$actuality['picture_url']?>" class="img-fluid" alt="">
+                      <div class="portfolio-info">
+                        <h4><?=$actuality['title']?></h4>
+                        <p>
+                            <?=$actuality['details']?>
+                        </p>
+                        <div class="portfolio-links">
+                          <a href="portfolio-details.php?actuality=<?=$actuality['id']?>" class="" data-glightbox="type: external" title="Details de l'actualité"><i class="bx bx-link"></i></a>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-              <div class="portfolio-wrap">
-                <img src="assets/img/portfolio/actu/actu-2.JPG" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>App 1</h4>
-                  <p>App</p>
-                  <div class="portfolio-links">
-                    <a href="assets/img/portfolio/actu/actu-2.JPG" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                    <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-              <div class="portfolio-wrap">
-                <img src="assets/img/portfolio/actu/actu-3.JPG" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>App 1</h4>
-                  <p>App</p>
-                  <div class="portfolio-links">
-                    <a href="assets/img/portfolio/actu/actu-3.JPG" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-                    <a href="portfolio-details.html" class="portfolio-details-lightbox" data-glightbox="type: external" title="Portfolio Details"><i class="bx bx-link"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            
+            <?php endforeach; ?>
         </div>
 
         
@@ -190,7 +176,7 @@
     </section>
     <!-- FIn de la section actualité -->
 
-    <!-- ======= Performance Section ======= -->
+    <!-- Performance Section
     <section id="services" class="services">
       <div class="container" data-aos="fade-up">
 
@@ -242,7 +228,7 @@
         </div>
 
       </div>
-    </section><!-- End Services Section -->
+    </section> End Services Section -->
 
     
 
